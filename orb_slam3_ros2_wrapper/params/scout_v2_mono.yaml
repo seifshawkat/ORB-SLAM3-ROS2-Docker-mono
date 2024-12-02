@@ -3,26 +3,47 @@
 #--------------------------------------------------------------------------------------------
 # Camera Parameters. Adjust them!
 #--------------------------------------------------------------------------------------------
+# Camera.type: "PinHole"
+
+# # Camera calibration and distortion parameters (OpenCV) 
+# Camera.fx: 528.433756558705
+# Camera.fy: 528.433756558705
+# Camera.cx: 320.5
+# Camera.cy: 240.5
+
+# # distortion parameters
+# Camera.k1: 0.0
+# Camera.k2: 0.0
+# Camera.p1: 0.0
+# Camera.p2: 0.0
+# Camera.k3: 0.0
+
+# Camera.width: 640
+# Camera.height: 480
+
+# # Camera frames per second 
+# Camera.fps: 30.0
+
 Camera.type: "PinHole"
 
 # Camera calibration and distortion parameters (OpenCV) 
-Camera.fx: 528.433756558705
-Camera.fy: 528.433756558705
-Camera.cx: 320.5
-Camera.cy: 240.5
+Camera.fx: 1396.199100
+Camera.fy: 1395.248617
+Camera.cx: 949.945174
+Camera.cy: 516.999087
 
 # distortion parameters
-Camera.k1: 0.0
-Camera.k2: 0.0
-Camera.p1: 0.0
-Camera.p2: 0.0
-Camera.k3: 0.0
+Camera.k1: 0.123876
+Camera.k2: -0.291135
+Camera.p1: -0.000288
+Camera.p2: -0.002136
+Camera.k3: 0.000000
 
-Camera.width: 640
-Camera.height: 480
+Camera.width: 1920
+Camera.height: 1080
 
 # Camera frames per second 
-Camera.fps: 30.0
+Camera.fps: 15
 
 # Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
 Camera.RGB: 1

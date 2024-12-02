@@ -71,6 +71,9 @@ def generate_launch_description():
             executable='mono',
             output='screen',
             namespace=context.launch_configurations['robot_namespace'],
+            remappings=[
+                ('/camera/image_raw','/robot_0/rgb_camera'),
+                ],
             arguments=[vocabulary_file_path, config_file_path],
             parameters=[configured_params])
         
