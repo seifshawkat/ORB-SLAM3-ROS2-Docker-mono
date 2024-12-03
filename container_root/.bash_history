@@ -502,3 +502,12 @@ exit
 ls
 ros2 launch orb_slam3_ros2_wrapper unirobot.launch.py -[B
 exit
+ros2 launch orb_slam3_ros2_wrapper unirobot.launch.py
+ros2 launch orb_slam3_ros2_wrapper unirobot_mono.launch.py
+exit
+ros2 run image_publisher image_publisher_node rtsp://192.168.1.139/ --ros-args -r /image_raw:=/scout_2/camera/image_raw
+ros2 run image_publisher image_publisher_node rtsp://192.168.1.139/ --ros-args -r /image_raw:=/robot_0/rgb_camera
+ros2 run image_publisher image_publisher_node rtsp://10.132.148.4/ --ros-args -r /image_raw:=/robot_0/rgb_camera
+exit
+ros2 launch orb_slam3_ros2_wrapper unirobot_mono.launch.py
+exit
