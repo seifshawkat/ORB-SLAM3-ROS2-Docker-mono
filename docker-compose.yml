@@ -2,6 +2,7 @@
 services:
   orb_slam3_22_humble:
     image: orb-slam3-humble:22.04
+    container_name: orb_slam3_ros2
     volumes:
       #full dev
       - /dev:/dev:rw
@@ -18,10 +19,13 @@ services:
       - /run/desktop/mnt/host/wslg/.X11-unix:/tmp/.X11-unix
       - /run/desktop/mnt/host/wslg:/mnt/wslg
     privileged: true
-    network_mode: host
     security_opt:
       - seccomp:unconfined
+    # networks:
+    #   - ros-bridge
+    network_mode: host
     ipc: host
+    pid: host
     stdin_open: true
     tty: true
     environment:
@@ -33,6 +37,7 @@ services:
       - WAYLAND_DISPLAY=wayland-0
       - XDG_RUNTIME_DIR=/mnt/wslg/runtime-dir
       - PULSE_SERVER=/mnt/wslg/PulseServer
+      - ROS_LOCALHOST_ONLY=0
     entrypoint: /bin/bash
     deploy:
       resources:
@@ -41,3 +46,7 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
+# networks:
+#   ros-bridge:
+#     name: ros-bridge
+#     driver: bridge
