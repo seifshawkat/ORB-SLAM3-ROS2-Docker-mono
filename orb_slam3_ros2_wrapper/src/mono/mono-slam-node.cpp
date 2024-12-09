@@ -31,7 +31,7 @@ namespace ORB_SLAM3_Wrapper
         this->declare_parameter("visualization", rclcpp::ParameterValue(true));
         this->get_parameter("visualization", bUseViewer);
 
-        this->declare_parameter("ros_visualization", rclcpp::ParameterValue(false));
+        this->declare_parameter("ros_visualization", rclcpp::ParameterValue(true));
         this->get_parameter("ros_visualization", rosViz_);
 
         this->declare_parameter("robot_base_frame", "base_link");
@@ -43,13 +43,13 @@ namespace ORB_SLAM3_Wrapper
         this->declare_parameter("odom_frame", "odom");
         this->get_parameter("odom_frame", odom_frame_id_);
 
-        this->declare_parameter("robot_x", rclcpp::ParameterValue(1.0));
+        this->declare_parameter("robot_x", rclcpp::ParameterValue(0.0));
         this->get_parameter("robot_x", robot_x_);
 
-        this->declare_parameter("robot_y", rclcpp::ParameterValue(1.0));
+        this->declare_parameter("robot_y", rclcpp::ParameterValue(0.0));
         this->get_parameter("robot_y", robot_y_);
 
-        this->declare_parameter("no_odometry_mode", rclcpp::ParameterValue(false));
+        this->declare_parameter("no_odometry_mode", rclcpp::ParameterValue(true));
         this->get_parameter("no_odometry_mode", no_odometry_mode_);
 
         this->declare_parameter("map_data_publish_frequency", rclcpp::ParameterValue(1000));
