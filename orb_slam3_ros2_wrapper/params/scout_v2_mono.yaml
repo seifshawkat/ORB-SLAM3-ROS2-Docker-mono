@@ -24,6 +24,7 @@
 # # Camera frames per second 
 # Camera.fps: 30.0
 
+#--------- iPhone 11 Pro ---------
 Camera.type: "PinHole"
 
 # Camera calibration and distortion parameters (OpenCV) 
@@ -43,7 +44,32 @@ Camera.width: 1920
 Camera.height: 1080
 
 # Camera frames per second 
-Camera.fps: 15
+Camera.fps: 20
+#---------------------------------
+
+#------- HikVision 4k Cam --------
+# Camera.type: "PinHole"
+
+# # Camera calibration and distortion parameters (OpenCV) 
+# Camera.fx: 1895.734383
+# Camera.fy: 1890.505670
+# Camera.cx: 944.266595
+# Camera.cy: 395.911700
+
+# # distortion parameters
+# Camera.k1: -0.443002
+# Camera.k2: 0.171758
+# Camera.p1: 0.013761
+# Camera.p2: 0.003197
+# Camera.k3: 0.000000
+
+# Camera.width: 1920
+# Camera.height: 1080
+
+# # Camera frames per second 
+# Camera.fps: 20
+#---------------------------------
+
 
 # Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
 Camera.RGB: 1
@@ -73,7 +99,7 @@ IMU.Frequency: 92
 #--------------------------------------------------------------------------------------------
 
 # ORB Extractor: Number of features per image
-ORBextractor.nFeatures: 1250
+ORBextractor.nFeatures: 2500
 
 # ORB Extractor: Scale factor between levels in the scale pyramid 	
 ORBextractor.scaleFactor: 1.2
@@ -101,4 +127,4 @@ Viewer.ViewpointX: 0
 Viewer.ViewpointY: -0.7
 Viewer.ViewpointZ: -1.8
 Viewer.ViewpointF: 500
-
+System.SaveAtlasToFile: ./atlas
