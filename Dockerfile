@@ -54,16 +54,17 @@ RUN cd /root/ && sudo chmod +x * && ./vscode_install.sh && rm -rf vscode_install
 # Build ORB-SLAM3 with its dependencies.
 RUN apt-get update && apt-get install ros-humble-pcl-ros tmux -y
 RUN apt-get install ros-humble-nav2-common x11-apps nano -y
+
+#      install gstreamer and gscam
+RUN sudo apt update && sudo apt-get install gstreamer1.0-tools libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-good1.0-dev gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav -y
+RUN sudo apt install ros-humble-gscam -y
+
 COPY ORB_SLAM3 /home/orb/ORB_SLAM3
 RUN . /opt/ros/humble/setup.sh && cd /home/orb/ORB_SLAM3 && mkdir -p build && ./build.sh
 COPY orb_slam3_ros2_wrapper /root/colcon_ws/src/orb_slam3_ros2_wrapper
 COPY slam_msgs /root/colcon_ws/src/slam_msgs
 RUN sudo apt-get install -y ros-humble-rmw-cyclonedds-cpp
 RUN . /opt/ros/humble/setup.sh && cd /root/colcon_ws/ && colcon build --symlink-install
-
-#install gstreamer and gscam
-RUN sudo apt update && sudo apt-get install gstreamer1.0-tools libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-good1.0-dev gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav
-RUN sudo apt install ros-humble-gscam
 
 #RUN cd /root/colcon_ws/
 # RUN export ROBOT_NAMESPACE="" && export ROBOT_Y="1.0" && export ROBOT_X="1.0"
