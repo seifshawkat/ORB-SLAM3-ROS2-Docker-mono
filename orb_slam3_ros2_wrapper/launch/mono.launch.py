@@ -29,22 +29,19 @@ def generate_launch_description():
         description='Use simulation (Gazebo) clock if true')
 
     robot_namespace =  LaunchConfiguration('robot_namespace')
-    ROBOT_NAMESPACE = os.environ['ROBOT_NAMESPACE']
-    robot_namespace_arg = DeclareLaunchArgument('robot_namespace', default_value=TextSubstitution(text=ROBOT_NAMESPACE),
+    robot_namespace_arg = DeclareLaunchArgument('robot_namespace', default_value="robot",
         description='The namespace of the robot')
 
     robot_x = LaunchConfiguration('robot_x')
-    ROBOT_X = os.environ['ROBOT_X']
-    robot_x_arg = DeclareLaunchArgument('robot_x', default_value=TextSubstitution(text=ROBOT_X),
+    robot_x_arg = DeclareLaunchArgument('robot_x', default_value="1.0",
         description='The namespace of the robot')
 
     robot_y = LaunchConfiguration('robot_y')
-    ROBOT_Y = os.environ['ROBOT_Y']
-    robot_y_arg = DeclareLaunchArgument('robot_y', default_value=TextSubstitution(text=ROBOT_Y),
+    robot_y_arg = DeclareLaunchArgument('robot_y', default_value="1.0",
         description='The namespace of the robot')
 #---------------------------------------------
 
-    def all_nodes_launch(context):
+    def all_nodes_launch(context, robot_namespace, robot_x, robot_y):
         params_file = LaunchConfiguration('params_file')
         vocabulary_file_path = "/home/orb/ORB_SLAM3/Vocabulary/ORBvoc.txt"
         config_file_path = "/root/colcon_ws/src/orb_slam3_ros2_wrapper/params/scout_v2_mono.yaml"#scout_v2_rgbd.yaml
@@ -54,15 +51,15 @@ def generate_launch_description():
             description='Full path to the ROS2 parameters file to use for all launched nodes')
 
         param_substitutions = {
-            'robot_base_frame': context.launch_configurations['robot_namespace'] + '/base_footprint',
-            'odom_frame': context.launch_configurations['robot_namespace'] + '/odom',
-            'robot_x': context.launch_configurations['robot_x'],
-            'robot_y': context.launch_configurations['robot_y']
+            'robot_base_frame': robot_namespace.perform(context) + '/base_footprint',
+            'odom_frame': robot_namespace.perform(context) + '/odom',
+            'robot_x': robot_x.perform(context),
+            'robot_y': robot_y.perform(context)
             }
 
         configured_params = RewrittenYaml(
             source_file=params_file,
-            root_key=context.launch_configurations['robot_namespace'],
+            root_key=robot_namespace.perform(context),
             param_rewrites=param_substitutions,
             convert_types=True)
         
@@ -70,7 +67,7 @@ def generate_launch_description():
             package='orb_slam3_ros2_wrapper',
             executable='mono',
             output='screen',
-            namespace=context.launch_configurations['robot_namespace'],
+            namespace=robot_namespace.perform(context),
             remappings=[
                 ('/camera/image_raw','/robot_0/rgb_camera'),
                 ],
@@ -79,7 +76,7 @@ def generate_launch_description():
         
         return [declare_params_file_cmd, orb_slam3_node]
 
-    opaque_function = OpaqueFunction(function=all_nodes_launch)
+    opaque_function = OpaqueFunction(function=all_nodes_launch, args=[robot_namespace, robot_x, robot_y])
 #---------------------------------------------
 
     return LaunchDescription([
