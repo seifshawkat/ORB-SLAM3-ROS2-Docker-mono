@@ -32,7 +32,7 @@ namespace ORB_SLAM3_Wrapper
         mSLAM_ = std::make_shared<ORB_SLAM3::System>(strVocFile_, strSettingsFile_, sensor_, bUseViewer_);
         typeConversions_ = std::make_shared<WrapperTypeConversions>();
         std::cout << "Interface constructor complete" << endl;
-        std::cout << "Robot X: " << robotX_ << " Robot Y: " << robotY_ << std::endl;
+        std::cout << "Robot X: " << robotX_ << " Robot Y: " << robotY_ << " globalFrame: " << globalFrame << " robotFrame: " << robotFrame << std::endl;
     }
 
     ORBSLAM3Interface::~ORBSLAM3Interface()

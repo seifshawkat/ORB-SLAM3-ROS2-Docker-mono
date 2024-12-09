@@ -16,7 +16,7 @@ function cleanup_and_exit {
 # Trap Ctrl+C signal and call the cleanup_and_exit function
 trap cleanup_and_exit INT
 
-export ROBOT_NAMESPACE=""
+export ROBOT_NAMESPACE="robot_0"
 export ROBOT_X="0.0"
 export ROBOT_Y="0.0"
 ros2 launch orb_slam3_ros2_wrapper rgbd.launch.py &
