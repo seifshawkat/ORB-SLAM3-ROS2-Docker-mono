@@ -511,3 +511,245 @@ ros2 run image_publisher image_publisher_node rtsp://10.132.148.4/ --ros-args -r
 exit
 ros2 launch orb_slam3_ros2_wrapper unirobot_mono.launch.py
 exit
+ros2 run gscam gscam_node --ros-args -p gscam_config:="rtspsrc location=rtsp://10.132.148.4/ latency=100 ! decodebin ! videoconvert ! video/x-raw,format=RGB" -r /camera/image_raw:=/robot_0/rgb_camera
+ros2 run gscam gscam_node --ros-args -p gscam_config:="rtspsrc location=rtsp://admin:Password123456@192.168.2.64:554/Streaming/Channels/101 latency=100 ! decodebin ! videoconvert ! video/x-raw,format=RGB" -r /camera/image_raw:=/robot_0/rgb_camera
+ros2 run gscam gscam_node --ros-args -p gscam_config:="rtspsrc location=rtsp://10.132.148.4/ latency=100 ! decodebin ! videoconvert ! video/x-raw,format=RGB" -r /camera/image_raw:=/robot_0/rgb_camera
+exit
+ls
+cd colcon_ws/
+ls
+cd src/
+ls
+cd orb_slam3_ros2_wrapper/
+ls
+cd params/
+ls
+vim scout_v2_mono.yaml 
+cd ..
+cd ../../../
+cd colcon_ws/
+cd install/
+ls
+orb_slam3_ros2_wrapper/
+cd orb_slam3_ros2_wrapper/
+ls
+cd share/
+ks
+ls
+cd orb_slam3_ros2_wrapper/
+ls
+cd params/
+ls
+exit
+ros2 launch orb_slam3_ros2_wrapper unirobot_mono.launch.py
+exit
+rviz
+rviz2
+eit
+exit
+ros2 run gscam gscam_node --ros-args -p gscam_config:="rtspsrc location=rtsp://10.152.71.189/ latency=100 ! decodebin ! videoconvert ! video/x-raw,format=RGB" -r /camera/image_raw:=/robot_0/rgb_camera
+exot
+exit
+rviz2
+ros2 run camera_calibration cameracalibrator --size 19x19 --square 0.025 --ros-args -r image:=/robot_0/rgb_camera
+exit
+ros2 run gscam gscam_node --ros-args -p gscam_config:="rtspsrc location=rtsp://10.152.71.189/ latency=100 ! decodebin ! videoconvert ! video/x-raw,format=RGB" -r /camera/image_raw:=/robot_0/rgb_camera
+ros2 run gscam gscam_node --ros-args -p gscam_config:="rtspsrc location=rtsp://admin:Password123456@192.168.2.64:554/Streaming/Channels/101 latency=100 ! decodebin ! videoconvert ! video/x-raw,format=RGB" -r /camera/image_raw:=/robot_0/rgb_camera
+exit
+ls
+ros2 launch orb_slam3_ros2_wrapper unirobot_mono.launch.py
+echo $ROS_DOMAIN_ID
+exit
+ls
+ros2 topic list
+ls
+cd colcon_ws/
+cd ..
+. /opt/ros/humble/setup.sh && cd /root/colcon_ws/ && colcon build --symlink-install
+exit
+ls
+ros2 topic list
+ros2 run demo_nodes_cpp talker in container 1
+exit
+ls
+hostname -I
+sudo apt-get ip-utils
+sudo apt-get install ip-utils
+sudo apt-get install iputils-ping
+hostname -I
+ping 172.18.0.3
+ros2 topic list
+ros2 run demo_nodes_cpp talker
+ros2 topic list
+ros2 run demo_nodes_cpp listener
+hostname -I
+ping 172.18.0.3
+echo $ROS_DOMAIN_ID
+ros2 node list
+ros2 topic list
+ros2 multicast send
+ros2 multicast receive
+echo $ROS_DOMAIN_ID
+ros2 topic list
+ros2
+ros2 doctor
+echo $ROS_LOCALHOST_ONLY
+exit
+ls
+echo $ROS_LOCALHOST_ONLY
+exit
+echo $ROS_LOCALHOST_ONLY
+ros2 topic list
+ros2 run demo_nodes_cpp listener
+exit
+hostname -I
+
+ros2 multicast receive
+ros2 multicast send
+ros2 topic list
+ros2 run demo_nodes_cpp talker
+ros2 run demo_nodes_cpp listener
+ros2 run demo_nodes_cpp talker
+ps -ax | grep rmw-implementation
+ros2 topic pub /test std_msgs/String --qos-reliability reliable
+ros2 topic pub /test std_msgs/String tset --qos-reliability reliable
+ros2 topic pub /test std_msgs/String data:tset --qos-reliability reliable
+ros2 topic pub /test std_msgs/String data = tss --qos-reliability reliable
+ros2 topic pub /test std_msgs/String "data: Hello!" --qos-reliability reliable
+date
+ros2 topic pub /test std_msgs/String "data: Hello!" --qos-reliability reliable
+ros2 run demo_nodes_cpp talker
+hostname -I
+exit
+hostname -I
+ros2 run demo_nodes_cpp talker
+ros2 daemon stop
+ros2 daemon start
+ros2 run demo_nodes_cpp talker
+clear
+ros2 run gscam gscam_node --ros-args -p gscam_config:="rtspsrc location=rtsp://10.106.206.255/ latency=100 ! decodebin ! videoconvert ! video/x-raw,format=RGB" -r /camera/image_raw:=/robot_0/rgb_camera
+exit
+ros2 launch orb_slam3_ros2_wrapper unirobot_mono.launch.py
+exit
+ros2 launch orb_slam3_ros2_wrapper unirobot_mono.launch.py
+ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 /robot_0/map /robot_0/base_footprint
+ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 mape[B /robot_0/base_footprint
+exit
+ros2 run gscam gscam_node --ros-args -p gscam_config:="rtspsrc location=rtsp://10.106.206.255/ latency=100 ! decodebin ! videoconvert ! video/x-raw,format=RGB" -r /camera/image_raw:=/robot_0/rgb_camera
+exit
+ros2 topic echo /mono_map_points | grep frame_id
+ros2 topic echo /mono_m
+ros2 topics list
+ros2 topic list
+ros2 topic echo /tsdf_map_in | grep frame_id
+ros2 topic echo /tsdf_pointcloud | grep frame_id
+ros2 topic echo /tsdf_pointcloud
+ros2 topic echo /surface_pointcloud
+ros2 topic echo /mesh
+ros2 run tf2_tools view_frames
+ros2 topic echo /tf
+ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 map base_footprint
+ros2 run tf2_ros static_transform_publisher 0 0 0.1 0 0 0 base_footprint camera_frame
+ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 base_footprint camera_frame
+ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 map base_footprint
+ros2 topic echo /tf
+ros2 daemon stop
+ros2 daemon start
+eit
+exit
+ros2 launch orb_slam3_ros2_wrapper unirobot_mono.launch.py
+ls
+cd colcon_ws/
+ls
+cd src/
+ls
+cd orb_slam3_ros2_wrapper/
+ls
+cd src/
+ls
+cd mono/
+ls
+vim mono-slam-node.cpp
+ls
+cd ..
+ls
+vim orb_slam3_interface.cpp 
+ls
+cd ~
+. /opt/ros/humble/setup.sh && cd /root/colcon_ws/ && colcon build --symlink-install
+echo $RMW_IMPLEMENTATION
+. /opt/ros/humble/setup.sh && cd /root/colcon_ws/ && colcon build --symlink-install
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+echo $RMW_IMPLEMENTATION
+export RMW_IMPLEMENTATION
+echo $RMW_IMPLEMENTATION
+export RMW_IMPLEMENTATION=
+echo $RMW_IMPLEMENTATION
+. /opt/ros/humble/setup.sh && cd /root/colcon_ws/ && colcon build --symlink-install
+source install/setup.bash
+colcon build --symlink-install
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+colcon build --symlink-install
+exit
+ros2 run gscam gscam_node --ros-args -p gscam_config:="rtspsrc location=rtsp://10.106.206.255/ latency=100 ! decodebin ! videoconvert ! video/x-raw,format=RGB" -p frame_id:="/robot_0/base_footprint" -r /camera/image_raw:=/robot_0/rgb_camera
+exi
+exit
+. /opt/ros/humble/setup.sh && cd /root/colcon_ws/ && colcon build --symlink-install
+ls
+rm build
+rm -h
+rm --help
+ls
+rm -r build/
+rm -r install
+ls
+. /opt/ros/humble/setup.sh && cd /root/colcon_ws/ && colcon build --symlink-install
+cd ..
+ros2 launch orb_slam3_ros2_wrapper unirobot_mono.launch.py
+exit
+ls
+cd colcon_ws/
+ls
+rm -r build/
+rm -r install/
+. /opt/ros/humble/setup.sh && cd /root/colcon_ws/ && colcon build --symlink-install
+cd ..
+ros2 launch orb_slam3_ros2_wrapper unirobot_mono.launch.py
+vim /root/.ros/log/2024-12-05-13-37-34-345918-docker-desktop-6442
+ros2 launch orb_slam3_ros2_wrapper unirobot_mono.launch.py
+exit
+ros2 launch orb_slam3_ros2_wrapper unirobot_mono.launch.py
+exit
+ls
+cd colcon_ws/
+ls
+cd build/
+ls
+cd orb_slam3_ros2_wrapper/
+ls
+cd mono 
+ls
+cd ../../
+ls
+cd install/
+ls
+cd ..
+cd install/orb_slam3_ros2_wrapper/
+ls
+cd sha
+cd share
+ls
+cd orb_slam3_ros2_wrapper/
+ls
+cd launch/
+ls
+vim unirobot_mono.launch.py 
+ls
+cd ..
+ls
+cd params/
+;s
+ls
+exit
+ros2 run gscam gscam_node --ros-args -p gscam_config:="rtspsrc location=rtsp://10.106.206.255/ latency=100 ! decodebin ! videoconvert ! video/x-raw,format=RGB" -p frame_id:="/robot_0/base_footprint" -r /camera/image_raw:=/robot_0/rgb_camera
+exit

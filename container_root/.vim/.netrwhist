@@ -1,0 +1,3 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/root/.ros/log/2024-12-05-13-37-34-345918-docker-desktop-6442'

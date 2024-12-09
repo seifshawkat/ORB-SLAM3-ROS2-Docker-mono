@@ -2,14 +2,18 @@
 docker build -t orb-slam3-humble:22.04 .
 
 #RUN
-docker compose run orb_slam3_22_humble
+docker compose up orb_slam3_22_humble -d
+docker exec -it orb_slam3_ros2 /bin/bash
+
+#docker compose run orb_slam3_22_humble --remove-orphans
+
 #LAUNCH ORB-SLAM3
 ros2 launch orb_slam3_ros2_wrapper unirobot_mono.launch.py
 
 #NEW TERMINAL - CONNECT TO DOCKER
-docker exec -it orb-slam3-ros2-docker-mono-orb_slam3_22_humble-run-5b3a1ab210ab /bin/bash
+docker exec -it orb_slam3_ros2 /bin/bash
 #RTSP INPUT
-ros2 run image_publisher image_publisher_node rtsp://10.3.148.4/ --ros-args -r /image_raw:=/robot_0/rgb_camera
+ros2 run image_publisher image_publisher_node rtsp://10.152.71.189/ --ros-args -r /image_raw:=/robot_0/rgb_camera
 
 
 #CALIBRATION
@@ -17,6 +21,8 @@ ros2 run image_publisher image_publisher_node rtsp://admin:Password123456@192.16
 ros2 run camera_calibration cameracalibrator --size 19x19 --square 0.025 --ros-args -r image:=/robot_0/rgb_camera
 
 
-ros2 run gscam gscam_node --ros-args -p gscam_config:="rtspsrc location=rtsp://admin:Password123456@192.168.2.64:554/Streaming/Channels/101 latency=100 ! decodebin ! videoconvert ! video/x-raw,format=RGB" -r /camera/image_raw:=/robot_0/rgb_camera
+ros2 run gscam gscam_node --ros-args -p gscam_config:="rtspsrc location=rtsp://admin:Password123456@192.168.2.64:554/Streaming/Channels/101 latency=100 ! decodebin ! videoconvert ! video/x-raw,format=RGB" -r /camera/image_raw:=/robot_0/camera/image_raw
 
-ros2 run gscam gscam_node --ros-args -p gscam_config:="rtspsrc location=rtsp://10.3.148.4/ latency=100 ! decodebin ! videoconvert ! video/x-raw,format=RGB" -r /camera/image_raw:=/robot_0/rgb_camera
+ros2 run gscam gscam_node --ros-args -p gscam_config:="rtspsrc location=rtsp://10.104.149.97/ latency=100 ! decodebin ! videoconvert ! video/x-raw,format=RGB" -p frame_id:="base_link" -r /camera/image_raw:=/robot_0/camera/image_raw
+
+#[mono-1]   what():  The parent map pose for this map ID does not exist. This should not happen.
